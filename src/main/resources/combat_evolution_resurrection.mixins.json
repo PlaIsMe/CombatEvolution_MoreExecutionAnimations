@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "package": "com.pla.combat_evolution_resurrection.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "combat_evolution_resurrection.mixins.refmap.json",
+  "plugin": "com.pla.combat_evolution_resurrection.mixins.plugin.CompatMixinPlugin",
+  "mixins": [
+    "annoyingvillagers.EquipmentDataLoaderMixin",
+    "annoyingvillagers.SpecialAttackOnKeyPressedEventMixin",
+    "annoyingvillagers.CEHumanoidPatchMixin",
+    "ExecuteMixin",
+    "CorruptAnimationsMixin",
+    "YamatoSkillMixin"
+  ],
+  "client": [
+  ],
+  "minVersion": "0.8"
+}
