@@ -1,4 +1,4 @@
-package com.pla.combat_evolution_resurrection.compat.annoyingvillagers;
+package com.pla.combat_evolution_resurrection.compat;
 
 import com.pla.annoyingvillagers.init.AnnoyingVillagersModItems;
 import com.pla.combat_evolution_resurrection.gameasset.CombatEvolutionResurrectionExecutionType;

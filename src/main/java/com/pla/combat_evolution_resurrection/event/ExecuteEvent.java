@@ -2,7 +2,7 @@ package com.pla.combat_evolution_resurrection.event;
 
 import com.pla.combat_evolution_resurrection.CombatEvolution_Resurrection;
 import com.pla.combat_evolution_resurrection.compat.WeaponsOfMiracles;
-import com.pla.combat_evolution_resurrection.compat.annoyingvillagers.AnnoyingVillagers;
+import com.pla.combat_evolution_resurrection.compat.AnnoyingVillagers;
 import com.pla.combat_evolution_resurrection.gameasset.CombatEvolutionResurrectionExecutionType;
 import net.corruptdog.cdm.world.CorruptWeaponCategories;
 import net.minecraft.world.InteractionHand;
