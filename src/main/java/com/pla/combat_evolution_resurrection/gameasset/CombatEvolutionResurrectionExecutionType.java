@@ -4,39 +4,9 @@ import net.minecraft.world.phys.Vec3;
 import net.shelmarow.combat_evolution.execution.ExecutionTypeManager;
 
 public class CombatEvolutionResurrectionExecutionType {
-    public static final ExecutionTypeManager.Type STRANGLE =
-            new ExecutionTypeManager.Type(
-                    CombatEvolutionResurrectionAnimations.STRANGLE_EXECUTE, CombatEvolutionResurrectionAnimations.STRANGLE_EXECUTE_HIT,
-                    new Vec3(0.8F, 0.0F, 0.0F), -10.0F, 100);
-
-    public static final ExecutionTypeManager.Type WRESTLING =
-            new ExecutionTypeManager.Type(
-                    CombatEvolutionResurrectionAnimations.WRESTLING_EXECUTE, CombatEvolutionResurrectionAnimations.WRESTLING_EXECUTE_HIT,
-                    new Vec3(1.2F, 0.0F, 0.0F), -10.0F, 100);
-
-    public static final ExecutionTypeManager.Type WRESTLING_BACK =
-            new ExecutionTypeManager.Type(
-                    CombatEvolutionResurrectionAnimations.WRESTLING_BACK_EXECUTE, CombatEvolutionResurrectionAnimations.WRESTLING_BACK_EXECUTE_HIT,
-                    new Vec3(1.2F, 0.0F, 0.0F), -10.0F, 100);
-
-    public static final ExecutionTypeManager.Type STAB =
-            new ExecutionTypeManager.Type(
-                    CombatEvolutionResurrectionAnimations.STAB_EXECUTE, CombatEvolutionResurrectionAnimations.STAB_EXECUTE_HIT,
-                    new Vec3(1.2F, 0.0F, 0.0F), -10.0F, 100);
-
-    public static final ExecutionTypeManager.Type DUAL_STAB =
-            new ExecutionTypeManager.Type(
-                    CombatEvolutionResurrectionAnimations.DUAL_STAB_EXECUTE, CombatEvolutionResurrectionAnimations.STAB_EXECUTE_HIT,
-                    new Vec3(1.2F, 0.0F, 0.0F), -10.0F, 100);
-
     public static final ExecutionTypeManager.Type DUAL_GREATSWORD =
             new ExecutionTypeManager.Type(
-                    CombatEvolutionResurrectionAnimations.DUAL_GREATSWORD_EXECUTE, CombatEvolutionResurrectionAnimations.STAB_EXECUTE_HIT,
-                    new Vec3(1.2F, 0.0F, 0.0F), -10.0F, 100);
-
-    public static final ExecutionTypeManager.Type SHIELD =
-            new ExecutionTypeManager.Type(
-                    CombatEvolutionResurrectionAnimations.SHIELD_EXECUTE, CombatEvolutionResurrectionAnimations.SHIELD_EXECUTE_HIT,
+                    CombatEvolutionResurrectionAnimations.DUAL_GREATSWORD_EXECUTE, CombatEvolutionResurrectionAnimations.SWORD_EXECUTE_HIT,
                     new Vec3(1.2F, 0.0F, 0.0F), -10.0F, 100);
 
     public static final ExecutionTypeManager.Type SWORD =

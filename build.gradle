@@ -11,7 +11,7 @@ version = mod_version
 group = mod_group_id
 
 base {
-    archivesName = "CombatEvolution-Resurrection-1.20.1"
+    archivesName = "CombatEvolution-MoreExecutionAnimations-1.20.1"
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)

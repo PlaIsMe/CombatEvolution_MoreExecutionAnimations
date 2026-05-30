@@ -168,7 +168,7 @@ public class WeaponsOfMiracles implements ICompatModule {
     public void onForgeEventBusClient(IEventBus iEventBus) {
     }
 
-    public static void registerAvExecute(RegisterCustomExecutionEvent event) {
+    public static void registerWomExecute(RegisterCustomExecutionEvent event) {
         event.RegisterExecutionByCategory(WOMWeaponCategories.TORMENT, CombatEvolutionResurrectionExecutionType.GREATSWORD);
         event.RegisterExecutionByCategory(WOMWeaponCategories.ENDERBLASTER, CombatEvolutionResurrectionExecutionType.FIST);
         event.RegisterExecutionByCategory(WOMWeaponCategories.NAPOLEON, CombatEvolutionResurrectionExecutionType.SPEAR);
