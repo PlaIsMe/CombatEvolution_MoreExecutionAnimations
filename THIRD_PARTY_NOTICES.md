@@ -3,7 +3,7 @@
 
 This repository contains third-party animations/assets that are copied/cloned for compatibility/registration.
 
-These files are **NOT** owned by AnnoyingVillagers_MoreCompatibility.
+These files are **NOT** owned by this mod.
 They remain **All Rights Reserved** by their original owner(s), unless the upstream provides a different license.
 
 ---
@@ -15,16 +15,6 @@ They remain **All Rights Reserved** by their original owner(s), unless the upstr
 
 **Paths / Files**
 - `src/main/resources/assets/combat_evolution_resurrection/animmodels/animations/biped/cdmoveset_clone`
-
-## B) AFL (Academic Free License) Components
-
-### B1) Annoying Villagers - Pugilist Steve - AFL-3.0
-- Type: assets, animations
-- Source: https://space.bilibili.com/1337039598/dynamic
-
-**Paths / Files**
-- `src/main/resources/assets/combat_evolution_resurrection/animmodels/animations/biped/pugilist_steve`
-
 ---
 
 **Notes**
