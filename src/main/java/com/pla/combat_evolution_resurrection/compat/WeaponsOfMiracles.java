@@ -6,8 +6,8 @@ import reascer.wom.world.capabilities.item.WOMWeaponCategories;
 
 public class WeaponsOfMiracles {
     public static void registerWomExecute(RegisterCustomExecutionEvent event) {
-        event.RegisterExecutionByCategory(WOMWeaponCategories.TORMENT, CombatEvolutionResurrectionExecutionType.GREATSWORD);
-        event.RegisterExecutionByCategory(WOMWeaponCategories.ENDERBLASTER, CombatEvolutionResurrectionExecutionType.FIST);
-        event.RegisterExecutionByCategory(WOMWeaponCategories.NAPOLEON, CombatEvolutionResurrectionExecutionType.SPEAR);
+        event.registerExecutionByCategory(WOMWeaponCategories.TORMENT, CombatEvolutionResurrectionExecutionType.GREATSWORD);
+        event.registerExecutionByCategory(WOMWeaponCategories.ENDERBLASTER, CombatEvolutionResurrectionExecutionType.FIST);
+        event.registerExecutionByCategory(WOMWeaponCategories.NAPOLEON, CombatEvolutionResurrectionExecutionType.SPEAR);
     }
 }

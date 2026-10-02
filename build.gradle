@@ -76,7 +76,7 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     implementation fg.deobf("curse.maven:epicfight-resurrection-1151542:6931390")
     implementation fg.deobf("curse.maven:epic-fight-mod-405076:7919289")
-    implementation fg.deobf("curse.maven:combat-evolution-1377795:7908514")
+    implementation fg.deobf("curse.maven:combat-evolution-1377795:9015624")
     implementation fg.deobf("curse.maven:weapons-of-miracles-epicfight-918614:7517612")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
