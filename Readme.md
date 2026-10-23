@@ -23,3 +23,17 @@ This repository is **NOT open source**.
 
 - **Code**: GNU GENERAL PUBLIC LICENSE (see `LICENSE.md`)
 - **Animations/assets**: All Rights Reserved and approved by asanginxst
+
+## Minecraft 1.21.1
+
+This branch builds with Java 21 and NeoForge 21.1.264. It requires Epic Fight,
+Combat Evolution, and the NeoForge 1.21.1 fork of EpicFight: Resurrection.
+Weapons of Miracles is supported when installed.
+
+Build with `./gradlew build` (or `gradlew.bat build` on Windows). The jar is
+written to `build/libs/`.
+
+To check execution registration against the running dependencies, use
+`gradlew.bat runServer -PverifyExecutions`. This checks the weapon/style selections
+and animation pairs after server startup, then stops the server. Verification
+classes are excluded from normal builds.

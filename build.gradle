@@ -1,130 +1,82 @@
 plugins {
     id 'eclipse'
     id 'idea'
+    id 'java-library'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
-    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
-    id 'org.spongepowered.mixin' version '0.7.+'
+    id 'net.neoforged.moddev' version '1.0.21'
 }
 
 version = mod_version
 group = mod_group_id
 
 base {
-    archivesName = "CombatEvolution-MoreExecutionAnimations-1.20.1"
+    archivesName = 'CombatEvolution-MoreExecutionAnimations-1.21.1'
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
-println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
-minecraft {
-    mappings channel: mapping_channel, version: mapping_version
-    copyIdeResources = true
+// Opt-in runtime regression check; verification classes are excluded from release builds.
+if (providers.gradleProperty('verifyExecutions').isPresent()) {
+    sourceSets.main.java.srcDir 'src/verification/java'
+}
+
+neoForge {
+    version = project.neo_version
+    parchment {
+        mappingsVersion = project.parchment_mappings_version
+        minecraftVersion = project.parchment_minecraft_version
+    }
     runs {
-        configureEach {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-
-            mods {
-                "${mod_id}" {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        client {
-            property 'forge.enabledGameTestNamespaces', mod_id
-        }
-
+        client { client() }
         server {
-            property 'forge.enabledGameTestNamespaces', mod_id
-            args '--nogui'
+            server()
+            programArgument '--nogui'
         }
-
-        gameTestServer {
-            property 'forge.enabledGameTestNamespaces', mod_id
-        }
-
-        data {
-            workingDirectory project.file('run-data')
-            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+        configureEach {
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
     }
+    mods {
+        "${mod_id}" { sourceSet(sourceSets.main) }
+    }
 }
-
-sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     mavenCentral()
-    maven {
-        url = uri("https://company/com/maven2")
-    }
-    maven {
-        url = uri("https://cursemaven.com")
-    }
-    mavenLocal()
-    flatDir { dir 'libs' }
-}
-
-mixin {
-    add sourceSets.main, 'combat_evolution_resurrection.mixins.refmap.json'
-    config 'combat_evolution_resurrection.mixins.json'
+    maven { url = uri('https://cursemaven.com') }
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    implementation fg.deobf("curse.maven:epicfight-resurrection-1151542:6931390")
-    implementation fg.deobf("curse.maven:epic-fight-mod-405076:7919289")
-    implementation fg.deobf("curse.maven:combat-evolution-1377795:9015624")
-    implementation fg.deobf("curse.maven:weapons-of-miracles-epicfight-918614:7517612")
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    implementation 'curse.maven:epic-fight-resurrection-fork-1514242:7927181'
+    implementation 'curse.maven:epic-fight-mod-405076:8175609'
+    implementation 'curse.maven:combat-evolution-1377795:9171333'
+    implementation 'curse.maven:weapons-of-miracles-epicfight-918614:8829395'
 }
 
-tasks.named('processResources', ProcessResources).configure {
-    var replaceProperties = [
-            minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
-            forge_version: forge_version, forge_version_range: forge_version_range,
-            loader_version_range: loader_version_range,
-            mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
-            mod_authors: mod_authors, mod_description: mod_description,
+def generateModMetadata = tasks.register('generateModMetadata', ProcessResources) {
+    def replaceProperties = [
+            minecraft_version_range: minecraft_version_range,
+            neo_version_range      : neo_version_range,
+            loader_version_range   : loader_version_range,
+            mod_id                 : mod_id,
+            mod_name               : mod_name,
+            mod_license            : mod_license,
+            mod_version            : mod_version,
+            mod_authors            : mod_authors,
+            mod_description        : mod_description
     ]
     inputs.properties replaceProperties
-
-    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
-        expand replaceProperties + [project: project]
-    }
+    expand replaceProperties
+    from 'src/main/templates'
+    into 'build/generated/sources/modMetadata'
 }
-
-tasks.named('jar', Jar).configure {
-    manifest {
-        attributes([
-                'Specification-Title'     : mod_id,
-                'Specification-Vendor'    : mod_authors,
-                'Specification-Version'   : '1', // We are version 1 of ourselves
-                'Implementation-Title'    : project.name,
-                'Implementation-Version'  : project.jar.archiveVersion,
-                'Implementation-Vendor'   : mod_authors,
-                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
-    }
-
-    finalizedBy 'reobfJar'
-}
+sourceSets.main.resources.srcDir generateModMetadata
+neoForge.ideSyncTask generateModMetadata
 
 publishing {
     publications {
-        register('mavenJava', MavenPublication) {
-            artifact jar
-        }
-    }
-    repositories {
-        maven {
-            url "file://${project.projectDir}/mcmodsrepo"
-        }
+        register('mavenJava', MavenPublication) { from components.java }
     }
 }
 
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
-}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }

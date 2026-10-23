@@ -3,8 +3,6 @@ package com.pla.combat_evolution_resurrection.gameasset;
 import com.pla.combat_evolution_resurrection.CombatEvolution_Resurrection;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.shelmarow.combat_evolution.gameassets.animation.ExecutionAttackAnimation;
 import net.shelmarow.combat_evolution.gameassets.animation.ExecutionHitAnimation;
 import net.shelmarow.combat_evolution.sounds.CESounds;
@@ -17,19 +15,21 @@ import yesman.epicfight.api.collider.OBBCollider;
 import yesman.epicfight.api.utils.math.ValueModifier;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.Armatures;
-import yesman.epicfight.gameasset.EpicFightSounds;
+import yesman.epicfight.registry.entries.EpicFightSounds;
 import yesman.epicfight.api.animation.property.AnimationProperty.StaticAnimationProperty;
-import yesman.epicfight.particle.EpicFightParticles;
+import yesman.epicfight.registry.entries.EpicFightParticles;
 import yesman.epicfight.world.damagesource.ExtraDamageInstance;
 import yesman.epicfight.world.damagesource.StunType;
 
 import java.util.Set;
 
-import static net.corruptdog.cdm.gameasset.CorruptAnimations.*;
+import static net.corruptdog.cdm.gameasset.CorruptAnimations.EXECUT;
+import static net.corruptdog.cdm.gameasset.CorruptAnimations.SLOW_SPEED;
+import static net.corruptdog.cdm.gameasset.CorruptAnimations.TACHI_EX;
 
-@Mod.EventBusSubscriber(modid = CombatEvolution_Resurrection.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+
 public class CombatEvolutionResurrectionAnimations {
-    private static final ExtraDamageInstance.ExtraDamage TARGET_MAX_HEALTH = new ExtraDamageInstance.ExtraDamage((attacker, itemstack, target, baseDamage, params) -> params[0] + target.getMaxHealth() * params[1], (itemstack, tooltips, baseDamage, params) -> {
+    private static final ExtraDamageInstance.ExtraDamage TARGET_MAX_HEALTH = new ExtraDamageInstance.ExtraDamage((attacker, itemstack, target, baseDamage, params) -> params[0] + target.getMaxHealth() * params[1], (level, itemstack, tooltips, baseDamage, params) -> {
     });
     public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> DUAL_GREATSWORD_EXECUTE;
     public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> SWORD_EXECUTE;
@@ -55,7 +55,6 @@ public class CombatEvolutionResurrectionAnimations {
     public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> DUAL_DAGGER_EXECUTE;
     public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> DUAL_DAGGER_EXECUTE_HIT;
 
-    @SubscribeEvent
     public static void registerAnimations(AnimationManager.AnimationRegistryEvent event) {
         event.newBuilder(CombatEvolution_Resurrection.MODID, CombatEvolutionResurrectionAnimations::build);
     }

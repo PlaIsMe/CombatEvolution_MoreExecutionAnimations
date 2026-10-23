@@ -1,18 +1,13 @@
 package com.pla.combat_evolution_resurrection.event;
 
-import com.pla.combat_evolution_resurrection.CombatEvolution_Resurrection;
 import com.pla.combat_evolution_resurrection.compat.CdMoveset;
 import com.pla.combat_evolution_resurrection.compat.WeaponsOfMiracles;
 import com.pla.combat_evolution_resurrection.gameasset.CombatEvolutionResurrectionExecutionType;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.fml.ModList;
 import net.shelmarow.combat_evolution.api.event.RegisterCustomExecutionEvent;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 
-@Mod.EventBusSubscriber(modid = CombatEvolution_Resurrection.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ExecuteEvent {
-    @SubscribeEvent
     public static void registerExecution(RegisterCustomExecutionEvent event){
         event.registerExecutionByCategory(CapabilityItem.WeaponCategories.SWORD, CapabilityItem.Styles.COMMON, ((item, livingEntityPatch) -> CombatEvolutionResurrectionExecutionType.SWORD));
         event.registerExecutionByCategory(CapabilityItem.WeaponCategories.FIST, CombatEvolutionResurrectionExecutionType.FIST);
