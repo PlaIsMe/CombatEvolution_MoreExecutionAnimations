@@ -1,13 +1,13 @@
 package com.pla.combat_evolution_resurrection.gameasset;
 
 import com.pla.combat_evolution_resurrection.CombatEvolution_Resurrection;
-import net.corruptdog.cdm.gameasset.CorruptSound;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.shelmarow.combat_evolution.gameassets.animation.ExecutionAttackAnimation;
 import net.shelmarow.combat_evolution.gameassets.animation.ExecutionHitAnimation;
+import net.shelmarow.combat_evolution.sounds.CESounds;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.property.AnimationEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty;
@@ -111,7 +111,7 @@ public class CombatEvolutionResurrectionAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.setter(1.0F))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(15.0F, 0.08F)))
-                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CorruptSound.DAMAGE.get())
+                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CESounds.EXECUTION_2.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)))
                         .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
                         .addEvents(new AnimationEvent[]{
@@ -164,7 +164,7 @@ public class CombatEvolutionResurrectionAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.setter(1.0F))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(15.0F, 0.08F)))
-                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CorruptSound.DAMAGE.get())
+                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CESounds.EXECUTION_2.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)))
                         .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, SLOW_SPEED)
                         .addEvents(new AnimationEvent[]{
@@ -187,7 +187,7 @@ public class CombatEvolutionResurrectionAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.setter(1.0F))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(15.0F, 0.08F)))
-                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CorruptSound.DAMAGE.get())
+                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CESounds.EXECUTION_2.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)))
                         .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, EXECUT)
                         .addEvents(new AnimationEvent[]{
@@ -199,7 +199,7 @@ public class CombatEvolutionResurrectionAnimations {
         CombatEvolutionResurrectionAnimations.YAMATO_EXECUTE = builder.nextAccessor("biped/cdmoveset_clone/yamato_execute",
                 (accessor) -> (new ExecutionAttackAnimation(0.05F, accessor, Armatures.BIPED,
                         (new ExecutionAttackAnimation.ExecutionPhase(false, .0F, 0.35F, 0.55F, 0.7F, 0.7F, Armatures.BIPED.get().rootJoint, executionCollider))
-                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CorruptSound.DAMAGE.get())
+                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CESounds.EXECUTION_2.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.5F))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
@@ -222,7 +222,7 @@ public class CombatEvolutionResurrectionAnimations {
         CombatEvolutionResurrectionAnimations.KATANA_EXECUTE = builder.nextAccessor("biped/cdmoveset_clone/katana_execute",
                 (accessor) -> (new ExecutionAttackAnimation(0.05F, accessor, Armatures.BIPED,
                         (new ExecutionAttackAnimation.ExecutionPhase(false, 0.0F, 0.0F, 0.35F, 0.55F, 0.7F, 0.7F, Armatures.BIPED.get().rootJoint, executionCollider))
-                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CorruptSound.DAMAGE.get())
+                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CESounds.EXECUTION_2.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.5F))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
@@ -256,7 +256,7 @@ public class CombatEvolutionResurrectionAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.setter(1.0F))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(15.0F, 0.08F)))
-                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CorruptSound.DAMAGE.get())
+                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CESounds.EXECUTION_2.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)))
                         .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, SLOW_SPEED)
                         .addEvents(new AnimationEvent[]{
@@ -286,7 +286,7 @@ public class CombatEvolutionResurrectionAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.setter(1.0F))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(15.0F, 0.08F)))
-                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CorruptSound.DAMAGE.get())
+                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CESounds.EXECUTION_2.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)))
                         .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, SLOW_SPEED)
                         .addEvents(new AnimationEvent[]{
@@ -305,7 +305,7 @@ public class CombatEvolutionResurrectionAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.setter(1.0F))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(0.0F)),
                         (new ExecutionAttackAnimation.ExecutionPhase(false, 1.3F, 1.45F, 1.55F, 1.6F, 1.6F, Armatures.BIPED.get().rootJoint, executionCollider))
-                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CorruptSound.DAMAGE.get())
+                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CESounds.EXECUTION_2.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.5F))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
@@ -335,7 +335,7 @@ public class CombatEvolutionResurrectionAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.setter(1.0F))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(0.0F)),
                         (new ExecutionAttackAnimation.ExecutionPhase(false, 1.3F, 1.35F, 1.55F, 1.6F, 1.6F, Armatures.BIPED.get().rootJoint, executionCollider))
-                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CorruptSound.DAMAGE.get())
+                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CESounds.EXECUTION_2.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.5F))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
@@ -365,14 +365,14 @@ public class CombatEvolutionResurrectionAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.setter(1.0F))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(0.0F)),
                         (new ExecutionAttackAnimation.ExecutionPhase(false, 0.35F, 0.45F, 0.55F, 0.95F, 1.0F, Armatures.BIPED.get().rootJoint, executionCollider))
-                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CorruptSound.DAMAGE.get())
+                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CESounds.EXECUTION_2.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.5F))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.setter(1.0F))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(0.0F)),
                         (new ExecutionAttackAnimation.ExecutionPhase(false, 1.0F, 1.15F, 1.3F, 1.3F, 1.35F, Armatures.BIPED.get().rootJoint, executionCollider))
-                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CorruptSound.DAMAGE.get())
+                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CESounds.EXECUTION_2.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.5F))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)

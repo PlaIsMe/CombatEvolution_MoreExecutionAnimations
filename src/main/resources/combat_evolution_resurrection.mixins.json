@@ -4,9 +4,6 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "combat_evolution_resurrection.mixins.refmap.json",
   "mixins": [
-    "ExecuteMixin",
-    "CorruptAnimationsMixin",
-    "YamatoSkillMixin"
   ],
   "client": [
   ],

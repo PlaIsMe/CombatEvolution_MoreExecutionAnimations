@@ -22,14 +22,4 @@ Compatibility add-ons for **Combat Evolution** and **EpicFight Resurrection**.
 This repository is **NOT open source**.
 
 - **Code**: GNU GENERAL PUBLIC LICENSE (see `LICENSE.md`)
-- **Cloned animations/assets**: All Rights Reserved by their original owner(s) and are listed in `THIRD_PARTY_NOTICES.md`
-
-See:
-- `LICENSE.md`
-- `LICENSING.md`
-- `THIRD_PARTY_NOTICES.md`
-
----
-
-## Credits
-- See `THIRD_PARTY_NOTICES.md`
+- **Animations/assets**: All Rights Reserved and approved by asanginxst
