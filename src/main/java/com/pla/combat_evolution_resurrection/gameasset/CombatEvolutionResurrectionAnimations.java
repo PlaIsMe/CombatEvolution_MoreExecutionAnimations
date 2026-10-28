@@ -23,10 +23,6 @@ import yesman.epicfight.world.damagesource.StunType;
 
 import java.util.Set;
 
-import static net.corruptdog.cdm.gameasset.CorruptAnimations.EXECUT;
-import static net.corruptdog.cdm.gameasset.CorruptAnimations.SLOW_SPEED;
-import static net.corruptdog.cdm.gameasset.CorruptAnimations.TACHI_EX;
-
 
 public class CombatEvolutionResurrectionAnimations {
     private static final ExtraDamageInstance.ExtraDamage TARGET_MAX_HEALTH = new ExtraDamageInstance.ExtraDamage((attacker, itemstack, target, baseDamage, params) -> params[0] + target.getMaxHealth() * params[1], (level, itemstack, tooltips, baseDamage, params) -> {
@@ -142,12 +138,12 @@ public class CombatEvolutionResurrectionAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(15.0F, 0.08F)))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT_HARD.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.HIT_BLUNT)))
-                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, SLOW_SPEED)
+                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.7F)
                         .addEvents(new AnimationEvent[]{
                                 AnimationEvent.InTimeEvent.create(0.6F, (livingEntityPatch, assetAccessor, animationParameters) -> livingEntityPatch.getOriginal().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 9, false, false)),
                                         AnimationEvent.Side.BOTH)}
                         ));
-        CombatEvolutionResurrectionAnimations.FIST_EXECUTE_HIT = builder.nextAccessor("biped/cdmoveset_clone/fist_execute_hit", (accessor) -> (new ExecutionHitAnimation(0.1F, accessor, Armatures.BIPED)).addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, SLOW_SPEED));
+        CombatEvolutionResurrectionAnimations.FIST_EXECUTE_HIT = builder.nextAccessor("biped/cdmoveset_clone/fist_execute_hit", (accessor) -> (new ExecutionHitAnimation(0.1F, accessor, Armatures.BIPED)).addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.7F));
 
         CombatEvolutionResurrectionAnimations.SPEAR_EXECUTE = builder.nextAccessor("biped/cdmoveset_clone/spear_execute",
                 (accessor) -> (new ExecutionAttackAnimation(0.05F, accessor, Armatures.BIPED,
@@ -165,12 +161,12 @@ public class CombatEvolutionResurrectionAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(15.0F, 0.08F)))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CESounds.EXECUTION_2.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)))
-                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, SLOW_SPEED)
+                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.7F)
                         .addEvents(new AnimationEvent[]{
                                 AnimationEvent.InTimeEvent.create(0.6F, (livingEntityPatch, assetAccessor, animationParameters) -> livingEntityPatch.getOriginal().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 9, false, false)),
                                         AnimationEvent.Side.BOTH)}
                         ));
-        CombatEvolutionResurrectionAnimations.SPEAR_EXECUTE_HIT = builder.nextAccessor("biped/cdmoveset_clone/spear_execute_hit", (accessor) -> (new ExecutionHitAnimation(0.1F, accessor, Armatures.BIPED)).addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, EXECUT));
+        CombatEvolutionResurrectionAnimations.SPEAR_EXECUTE_HIT = builder.nextAccessor("biped/cdmoveset_clone/spear_execute_hit", (accessor) -> (new ExecutionHitAnimation(0.1F, accessor, Armatures.BIPED)).addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.85F));
 
         CombatEvolutionResurrectionAnimations.GREATSWORD_EXECUTE = builder.nextAccessor("biped/cdmoveset_clone/greatsword_execute",
                 (accessor) -> (new ExecutionAttackAnimation(0.05F, accessor, Armatures.BIPED,
@@ -188,12 +184,12 @@ public class CombatEvolutionResurrectionAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(15.0F, 0.08F)))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CESounds.EXECUTION_2.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)))
-                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, EXECUT)
+                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.85F)
                         .addEvents(new AnimationEvent[]{
                                 AnimationEvent.InTimeEvent.create(0.6F, (livingEntityPatch, assetAccessor, animationParameters) -> livingEntityPatch.getOriginal().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 9, false, false)),
                                         AnimationEvent.Side.BOTH)}
                         ));
-        CombatEvolutionResurrectionAnimations.GREATSWORD_EXECUTE_HIT = builder.nextAccessor("biped/cdmoveset_clone/greatsword_execute_hit", (accessor) -> (new ExecutionHitAnimation(0.6F, accessor, Armatures.BIPED)).addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, SLOW_SPEED));
+        CombatEvolutionResurrectionAnimations.GREATSWORD_EXECUTE_HIT = builder.nextAccessor("biped/cdmoveset_clone/greatsword_execute_hit", (accessor) -> (new ExecutionHitAnimation(0.6F, accessor, Armatures.BIPED)).addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.7F));
 
         CombatEvolutionResurrectionAnimations.YAMATO_EXECUTE = builder.nextAccessor("biped/cdmoveset_clone/yamato_execute",
                 (accessor) -> (new ExecutionAttackAnimation(0.05F, accessor, Armatures.BIPED,
@@ -211,12 +207,12 @@ public class CombatEvolutionResurrectionAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(15.0F, 0.08F)))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.EVISCERATE.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)))
-                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, SLOW_SPEED)
+                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.7F)
                         .addEvents(new AnimationEvent[]{
                                 AnimationEvent.InTimeEvent.create(0.6F, (livingEntityPatch, assetAccessor, animationParameters) -> livingEntityPatch.getOriginal().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 9, false, false)),
                                         AnimationEvent.Side.BOTH)}
                         ));
-        CombatEvolutionResurrectionAnimations.YAMATO_EXECUTE_HIT = builder.nextAccessor("biped/cdmoveset_clone/yamato_execute_hit", (accessor) -> (new ExecutionHitAnimation(0.05F, accessor, Armatures.BIPED)).addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, EXECUT));
+        CombatEvolutionResurrectionAnimations.YAMATO_EXECUTE_HIT = builder.nextAccessor("biped/cdmoveset_clone/yamato_execute_hit", (accessor) -> (new ExecutionHitAnimation(0.05F, accessor, Armatures.BIPED)).addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.85F));
 
         CombatEvolutionResurrectionAnimations.KATANA_EXECUTE = builder.nextAccessor("biped/cdmoveset_clone/katana_execute",
                 (accessor) -> (new ExecutionAttackAnimation(0.05F, accessor, Armatures.BIPED,
@@ -234,12 +230,12 @@ public class CombatEvolutionResurrectionAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(15.0F, 0.08F)))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.EVISCERATE.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)))
-                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, SLOW_SPEED)
+                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.7F)
                         .addEvents(new AnimationEvent[]{
                                 AnimationEvent.InTimeEvent.create(0.6F, (livingEntityPatch, assetAccessor, animationParameters) -> livingEntityPatch.getOriginal().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 9, false, false)),
                                         AnimationEvent.Side.BOTH)}
                         ));
-        CombatEvolutionResurrectionAnimations.KATANA_EXECUTE_HIT = builder.nextAccessor("biped/cdmoveset_clone/katana_execute_hit", (accessor) -> (new ExecutionHitAnimation(0.05F, accessor, Armatures.BIPED)).addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, EXECUT));
+        CombatEvolutionResurrectionAnimations.KATANA_EXECUTE_HIT = builder.nextAccessor("biped/cdmoveset_clone/katana_execute_hit", (accessor) -> (new ExecutionHitAnimation(0.05F, accessor, Armatures.BIPED)).addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.85F));
 
         CombatEvolutionResurrectionAnimations.TRIDENT_EXECUTE = builder.nextAccessor("biped/cdmoveset_clone/trident_execute",
                 (accessor) -> (new ExecutionAttackAnimation(0.01F, accessor, Armatures.BIPED,
@@ -257,12 +253,12 @@ public class CombatEvolutionResurrectionAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(15.0F, 0.08F)))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CESounds.EXECUTION_2.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)))
-                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, SLOW_SPEED)
+                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.7F)
                         .addEvents(new AnimationEvent[]{
                                 AnimationEvent.InTimeEvent.create(0.6F, (livingEntityPatch, assetAccessor, animationParameters) -> livingEntityPatch.getOriginal().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 9, false, false)),
                                         AnimationEvent.Side.BOTH)}
                         ));
-        CombatEvolutionResurrectionAnimations.TRIDENT_EXECUTE_HIT = builder.nextAccessor("biped/cdmoveset_clone/trident_execute_hit", (accessor) -> (new ExecutionHitAnimation(0.05F, accessor, Armatures.BIPED)).addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, EXECUT));
+        CombatEvolutionResurrectionAnimations.TRIDENT_EXECUTE_HIT = builder.nextAccessor("biped/cdmoveset_clone/trident_execute_hit", (accessor) -> (new ExecutionHitAnimation(0.05F, accessor, Armatures.BIPED)).addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.85F));
 
         CombatEvolutionResurrectionAnimations.TACHI_EXECUTE = builder.nextAccessor("biped/cdmoveset_clone/tachi_execute",
                 (accessor) -> (new ExecutionAttackAnimation(0.05F, accessor, Armatures.BIPED,
@@ -287,12 +283,12 @@ public class CombatEvolutionResurrectionAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(15.0F, 0.08F)))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, CESounds.EXECUTION_2.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)))
-                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, SLOW_SPEED)
+                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.7F)
                         .addEvents(new AnimationEvent[]{
                                 AnimationEvent.InTimeEvent.create(0.6F, (livingEntityPatch, assetAccessor, animationParameters) -> livingEntityPatch.getOriginal().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 9, false, false)),
                                         AnimationEvent.Side.BOTH)}
                         ));
-        CombatEvolutionResurrectionAnimations.TACHI_EXECUTE_HIT = builder.nextAccessor("biped/cdmoveset_clone/tachi_execute_hit", (accessor) -> (new ExecutionHitAnimation(0.05F, accessor, Armatures.BIPED)).addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, TACHI_EX));
+        CombatEvolutionResurrectionAnimations.TACHI_EXECUTE_HIT = builder.nextAccessor("biped/cdmoveset_clone/tachi_execute_hit", (accessor) -> (new ExecutionHitAnimation(0.05F, accessor, Armatures.BIPED)).addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.75F));
 
         CombatEvolutionResurrectionAnimations.DAGGER_EXECUTE = builder.nextAccessor("biped/cdmoveset_clone/dagger_execute",
                 (accessor) -> (new ExecutionAttackAnimation(0.05F, accessor, Armatures.BIPED,
@@ -317,12 +313,12 @@ public class CombatEvolutionResurrectionAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(15.0F, 0.08F)))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.EVISCERATE.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)))
-                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, EXECUT)
+                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.85F)
                         .addEvents(new AnimationEvent[]{
                                 AnimationEvent.InTimeEvent.create(0.6F, (livingEntityPatch, assetAccessor, animationParameters) -> livingEntityPatch.getOriginal().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 9, false, false)),
                                         AnimationEvent.Side.BOTH)}
                         ));
-        CombatEvolutionResurrectionAnimations.DAGGER_EXECUTE_HIT = builder.nextAccessor("biped/cdmoveset_clone/dagger_execute_hit", (accessor) -> (new ExecutionHitAnimation(0.05F, accessor, Armatures.BIPED)).addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, EXECUT));
+        CombatEvolutionResurrectionAnimations.DAGGER_EXECUTE_HIT = builder.nextAccessor("biped/cdmoveset_clone/dagger_execute_hit", (accessor) -> (new ExecutionHitAnimation(0.05F, accessor, Armatures.BIPED)).addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.85F));
 
         CombatEvolutionResurrectionAnimations.LONGSWORD_EXECUTE = builder.nextAccessor("biped/cdmoveset_clone/longsword_execute",
                 (accessor) -> (new ExecutionAttackAnimation(0.05F, accessor, Armatures.BIPED,
@@ -347,7 +343,7 @@ public class CombatEvolutionResurrectionAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(15.0F, 0.08F)))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.EVISCERATE.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)))
-                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, SLOW_SPEED)
+                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.7F)
                         .addEvents(new AnimationEvent[]{
                                 AnimationEvent.InTimeEvent.create(0.6F, (livingEntityPatch, assetAccessor, animationParameters) -> livingEntityPatch.getOriginal().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 9, false, false)),
                                         AnimationEvent.Side.BOTH)}
@@ -384,11 +380,11 @@ public class CombatEvolutionResurrectionAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(15.0F, 0.08F)))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT_HARD.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.HIT_BLUNT)))
-                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, SLOW_SPEED)
+                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.7F)
                         .addEvents(new AnimationEvent[]{
                                 AnimationEvent.InTimeEvent.create(0.6F, (livingEntityPatch, assetAccessor, animationParameters) -> livingEntityPatch.getOriginal().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 9, false, false)),
                                         AnimationEvent.Side.BOTH)}
                         ));
-        CombatEvolutionResurrectionAnimations.DUAL_DAGGER_EXECUTE_HIT = builder.nextAccessor("biped/cdmoveset_clone/dual_dagger_execute_hit", (accessor) -> (new ExecutionHitAnimation(0.05F, accessor, Armatures.BIPED)).addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, SLOW_SPEED));
+        CombatEvolutionResurrectionAnimations.DUAL_DAGGER_EXECUTE_HIT = builder.nextAccessor("biped/cdmoveset_clone/dual_dagger_execute_hit", (accessor) -> (new ExecutionHitAnimation(0.05F, accessor, Armatures.BIPED)).addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.7F));
     }
 }
